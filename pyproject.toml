@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "yelptmp"
+version = "0.1.0"
+description = ""
+authors = ["Alexandr Bobrov <alexbobrow@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.116.1"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.42"}
+asyncpg = "^0.30.0"
+alembic = "^1.16.4"
+geoalchemy2 = {extras = ["shapely"], version = "^0.18.0"}
+pydantic-settings = "^2.10.1"
+dependency-injector = "^4.48.1"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.3.0"
+factory-boy = "^3.3.3"
+pytest = "^8.4.1"
+pytest-asyncio = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+disallow_untyped_defs = true

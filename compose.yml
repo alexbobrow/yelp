@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgis/postgis:17-master
+    container_name: postgres_yelp
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    container_name: web_yelp
+    command: fastapi run main.py
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - API_KEY=123456789
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
